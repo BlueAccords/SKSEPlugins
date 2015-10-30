@@ -15,32 +15,89 @@ double ObjectWidget::GetProperty(UInt32 type)
 	case kPropertyType_Flags:
 		return (double)flags;
 		break;
-	case kPropertyType_PrimaryColor:
-		return params[kProperty_PrimaryColor].GetNumber();
+		// Health Properties
+	case kPropertyType_HealthPrimaryColor:
+		return params[kProperty_HealthPrimaryColor].GetNumber();
 		break;
-	case kPropertyType_SecondaryColor:
-		return params[kProperty_SecondaryColor].GetNumber();
+	case kPropertyType_HealthSecondaryColor:
+		return params[kProperty_HealthSecondaryColor].GetNumber();
 		break;
-	case kPropertyType_FlashColor:
-		return params[kProperty_FlashColor].GetNumber();
+	case kPropertyType_HealthFlashColor:
+		return params[kProperty_HealthFlashColor].GetNumber();
 		break;
-	case kPropertyType_PrimaryFriendlyColor:
-		return params[kProperty_PrimaryFriendlyColor].GetNumber();
+	case kPropertyType_HealthPrimaryFriendlyColor:
+		return params[kProperty_HealthPrimaryFriendlyColor].GetNumber();
 		break;
-	case kPropertyType_SecondaryFriendlyColor:
-		return params[kProperty_SecondaryFriendlyColor].GetNumber();
+	case kPropertyType_HealthSecondaryFriendlyColor:
+		return params[kProperty_HealthSecondaryFriendlyColor].GetNumber();
 		break;
-	case kPropertyType_FlashFriendlyColor:
-		return params[kProperty_FlashFriendlyColor].GetNumber();
+	case kPropertyType_HealthFlashFriendlyColor:
+		return params[kProperty_HealthFlashFriendlyColor].GetNumber();
 		break;
-	case kPropertyType_FillMode:
-		return params[kProperty_FillMode].GetNumber();
+	case kPropertyType_HealthFillMode:
+		return params[kProperty_HealthFillMode].GetNumber();
 		break;
-	case kPropertyType_CurrentValue:
-		return params[kProperty_CurrentValue].GetNumber();
+	case kPropertyType_HealthCurrentValue:
+		return params[kProperty_HealthCurrentValue].GetNumber();
 		break;
-	case kPropertyType_MaximumValue:
-		return params[kProperty_MaximumValue].GetNumber();
+	case kPropertyType_HealthMaximumValue:
+		return params[kProperty_HealthMaximumValue].GetNumber();
+		break;
+		// Magicka Properties
+	case kPropertyType_MagickaPrimaryColor:
+		return params[kProperty_MagickaPrimaryColor].GetNumber();
+		break;
+	case kPropertyType_MagickaSecondaryColor:
+		return params[kProperty_MagickaSecondaryColor].GetNumber();
+		break;
+	case kPropertyType_MagickaFlashColor:
+		return params[kProperty_MagickaFlashColor].GetNumber();
+		break;
+	case kPropertyType_MagickaPrimaryFriendlyColor:
+		return params[kProperty_MagickaPrimaryFriendlyColor].GetNumber();
+		break;
+	case kPropertyType_MagickaSecondaryFriendlyColor:
+		return params[kProperty_MagickaSecondaryFriendlyColor].GetNumber();
+		break;
+	case kPropertyType_MagickaFlashFriendlyColor:
+		return params[kProperty_MagickaFlashFriendlyColor].GetNumber();
+		break;
+	case kPropertyType_MagickaFillMode:
+		return params[kProperty_MagickaFillMode].GetNumber();
+		break;
+	case kPropertyType_MagickaCurrentValue:
+		return params[kProperty_MagickaCurrentValue].GetNumber();
+		break;
+	case kPropertyType_MagickaMaximumValue:
+		return params[kProperty_MagickaMaximumValue].GetNumber();
+		break;
+		// Stamina Properties
+	case kPropertyType_StaminaPrimaryColor:
+		return params[kProperty_StaminaPrimaryColor].GetNumber();
+		break;
+	case kPropertyType_StaminaSecondaryColor:
+		return params[kProperty_StaminaSecondaryColor].GetNumber();
+		break;
+	case kPropertyType_StaminaFlashColor:
+		return params[kProperty_StaminaFlashColor].GetNumber();
+		break;
+	case kPropertyType_StaminaPrimaryFriendlyColor:
+		return params[kProperty_StaminaPrimaryFriendlyColor].GetNumber();
+		break;
+	case kPropertyType_StaminaSecondaryFriendlyColor:
+		return params[kProperty_StaminaSecondaryFriendlyColor].GetNumber();
+		break;
+	case kPropertyType_StaminaFlashFriendlyColor:
+		return params[kProperty_StaminaFlashFriendlyColor].GetNumber();
+		break;
+	case kPropertyType_StaminaFillMode:
+		return params[kProperty_StaminaFillMode].GetNumber();
+		break;
+	case kPropertyType_StaminaCurrentValue:
+		return params[kProperty_StaminaCurrentValue].GetNumber();
+		break;
+	case kPropertyType_StaminaMaximumValue:
+		return params[kProperty_StaminaMaximumValue].GetNumber();
 		break;
 	}
 
@@ -53,32 +110,89 @@ void ObjectWidget::SetProperty(UInt32 type, double value)
 	case kPropertyType_Flags:
 		flags = (UInt32)value;
 		break;
-	case kPropertyType_CurrentValue:
-		params[kProperty_CurrentValue].SetNumber(value);
+		// Health Properties
+	case kPropertyType_HealthCurrentValue:
+		params[kProperty_HealthCurrentValue].SetNumber(value);
 		break;
-	case kPropertyType_MaximumValue:
-		params[kProperty_MaximumValue].SetNumber(value);
+	case kPropertyType_HealthMaximumValue:
+		params[kProperty_HealthMaximumValue].SetNumber(value);
 		break;
-	case kPropertyType_PrimaryColor:
-		params[kProperty_PrimaryColor].SetNumber(value);
+	case kPropertyType_HealthPrimaryColor:
+		params[kProperty_HealthPrimaryColor].SetNumber(value);
 		break;
-	case kPropertyType_SecondaryColor:
-		params[kProperty_SecondaryColor].SetNumber(value);
+	case kPropertyType_HealthSecondaryColor:
+		params[kProperty_HealthSecondaryColor].SetNumber(value);
 		break;
-	case kPropertyType_FlashColor:
-		params[kProperty_FlashColor].SetNumber(value);
+	case kPropertyType_HealthFlashColor:
+		params[kProperty_HealthFlashColor].SetNumber(value);
 		break;
-	case kPropertyType_PrimaryFriendlyColor:
-		params[kProperty_PrimaryFriendlyColor].SetNumber(value);
+	case kPropertyType_HealthPrimaryFriendlyColor:
+		params[kProperty_HealthPrimaryFriendlyColor].SetNumber(value);
 		break;
-	case kPropertyType_SecondaryFriendlyColor:
-		params[kProperty_SecondaryFriendlyColor].SetNumber(value);
+	case kPropertyType_HealthSecondaryFriendlyColor:
+		params[kProperty_HealthSecondaryFriendlyColor].SetNumber(value);
 		break;
-	case kPropertyType_FlashFriendlyColor:
-		params[kProperty_FlashFriendlyColor].SetNumber(value);
+	case kPropertyType_HealthFlashFriendlyColor:
+		params[kProperty_HealthFlashFriendlyColor].SetNumber(value);
 		break;
-	case kPropertyType_FillMode:
-		params[kProperty_FillMode].SetNumber(value);
+	case kPropertyType_HealthFillMode:
+		params[kProperty_HealthFillMode].SetNumber(value);
+		break;
+		// Magicka Properties
+	case kPropertyType_MagickaCurrentValue:
+		params[kProperty_MagickaCurrentValue].SetNumber(value);
+		break;
+	case kPropertyType_MagickaMaximumValue:
+		params[kProperty_MagickaMaximumValue].SetNumber(value);
+		break;
+	case kPropertyType_MagickaPrimaryColor:
+		params[kProperty_MagickaPrimaryColor].SetNumber(value);
+		break;
+	case kPropertyType_MagickaSecondaryColor:
+		params[kProperty_MagickaSecondaryColor].SetNumber(value);
+		break;
+	case kPropertyType_MagickaFlashColor:
+		params[kProperty_MagickaFlashColor].SetNumber(value);
+		break;
+	case kPropertyType_MagickaPrimaryFriendlyColor:
+		params[kProperty_MagickaPrimaryFriendlyColor].SetNumber(value);
+		break;
+	case kPropertyType_MagickaSecondaryFriendlyColor:
+		params[kProperty_MagickaSecondaryFriendlyColor].SetNumber(value);
+		break;
+	case kPropertyType_MagickaFlashFriendlyColor:
+		params[kProperty_MagickaFlashFriendlyColor].SetNumber(value);
+		break;
+	case kPropertyType_MagickaFillMode:
+		params[kProperty_MagickaFillMode].SetNumber(value);
+		break;
+		// Stamina Properties
+	case kPropertyType_StaminaCurrentValue:
+		params[kProperty_StaminaCurrentValue].SetNumber(value);
+		break;
+	case kPropertyType_StaminaMaximumValue:
+		params[kProperty_StaminaMaximumValue].SetNumber(value);
+		break;
+	case kPropertyType_StaminaPrimaryColor:
+		params[kProperty_StaminaPrimaryColor].SetNumber(value);
+		break;
+	case kPropertyType_StaminaSecondaryColor:
+		params[kProperty_StaminaSecondaryColor].SetNumber(value);
+		break;
+	case kPropertyType_StaminaFlashColor:
+		params[kProperty_StaminaFlashColor].SetNumber(value);
+		break;
+	case kPropertyType_StaminaPrimaryFriendlyColor:
+		params[kProperty_StaminaPrimaryFriendlyColor].SetNumber(value);
+		break;
+	case kPropertyType_StaminaSecondaryFriendlyColor:
+		params[kProperty_StaminaSecondaryFriendlyColor].SetNumber(value);
+		break;
+	case kPropertyType_StaminaFlashFriendlyColor:
+		params[kProperty_StaminaFlashFriendlyColor].SetNumber(value);
+		break;
+	case kPropertyType_StaminaFillMode:
+		params[kProperty_StaminaFillMode].SetNumber(value);
 		break;
 	}
 }
@@ -87,6 +201,9 @@ void ObjectWidget::UpdateProperty(UInt32 type)
 {
 	switch(type)
 	{
+	// I'm not sure if you need each data type needs their own separate set of flags or not.
+	// I'm assuming the show in combat/hide on death/Line of Sight checks are important but I don't know how
+	// I'd apply it to magicka and stamina as well.
 	case kPropertyType_Flags:
 		{
 			// Update visibility if necessary
