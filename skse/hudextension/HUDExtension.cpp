@@ -296,7 +296,7 @@ void ObjectWidget::UpdateValues()
 	update[4] = params[kProperty_StaminaCurrentValue];
 	update[5] = params[kProperty_StaminaMaximumValue];
 
-	object.Invoke("setValues", NULL, update, 2);
+	object.Invoke("setValues", NULL, update, 6);
 }
 
 void ObjectWidget::UpdateColors()
@@ -324,7 +324,7 @@ void ObjectWidget::UpdateColors()
 		update[7] = params[kProperty_StaminaSecondaryFriendlyColor];
 		update[8] = params[kProperty_StaminaFlashFriendlyColor];
 	}
-	object.Invoke("setColors", NULL, update, 3);
+	object.Invoke("setColors", NULL, update, 18);
 }
 
 void ObjectWidget::UpdateFlags()
