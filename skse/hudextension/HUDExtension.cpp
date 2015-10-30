@@ -299,9 +299,10 @@ void ObjectWidget::UpdateValues()
 	object.Invoke("setValues", NULL, update, 6);
 }
 
+// Updated to update colors for magicka and stamina as well.s
 void ObjectWidget::UpdateColors()
 {
-	GFxValue update[18]; // original size of 3
+	GFxValue update[9]; // original size of 3
 	if (!IsFriendly()) {
 		update[0] = params[kProperty_HealthPrimaryColor];
 		update[1] = params[kProperty_HealthSecondaryColor];
@@ -324,7 +325,7 @@ void ObjectWidget::UpdateColors()
 		update[7] = params[kProperty_StaminaSecondaryFriendlyColor];
 		update[8] = params[kProperty_StaminaFlashFriendlyColor];
 	}
-	object.Invoke("setColors", NULL, update, 18);
+	object.Invoke("setColors", NULL, update, 9);
 }
 
 void ObjectWidget::UpdateFlags()
@@ -341,7 +342,7 @@ void ObjectWidget::UpdateFlags()
 // Need to adjust this for magicka and stamina as well. 
 void ObjectWidget::UpdateFillMode()
 {
-	object.Invoke("setFillDirection", NULL, &params[kProperty_FillMode], 1);
+	object.Invoke("setFillDirection", NULL, &params[kProperty_HealthFillMode], 1);
 }
 
 void ObjectWidget::UpdateFlash()
@@ -550,32 +551,32 @@ void ObjectWidgets::AddGFXMeter(GFxMovieView * view, ObjectWidget * objectMeter,
 	else
 		update[12].SetUndefined();
 
-	if (colors[0] != -1)
+	if (colors[6] != -1)
 		update[13] = objectMeter->params[ObjectWidget::kProperty_MagickaPrimaryColor];
 	else
 		update[13].SetUndefined();
 
-	if (colors[1] != -1)
+	if (colors[7] != -1)
 		update[14] = objectMeter->params[ObjectWidget::kProperty_MagickaSecondaryColor];
 	else
 		update[14].SetUndefined();
 
-	if (colors[2] != -1)
+	if (colors[8] != -1)
 		update[15] = objectMeter->params[ObjectWidget::kProperty_MagickaFlashColor];
 	else
 		update[15].SetUndefined();
 
-	if (colors[3] != -1)
+	if (colors[9] != -1)
 		update[16] = objectMeter->params[ObjectWidget::kProperty_MagickaPrimaryFriendlyColor];
 	else
 		update[16].SetUndefined();
 
-	if (colors[4] != -1)
+	if (colors[10] != -1)
 		update[17] = objectMeter->params[ObjectWidget::kProperty_MagickaSecondaryFriendlyColor];
 	else
 		update[17].SetUndefined();
 
-	if (colors[5] != -1)
+	if (colors[11] != -1)
 		update[18] = objectMeter->params[ObjectWidget::kProperty_MagickaFlashFriendlyColor];
 	else
 		update[18].SetUndefined();
@@ -596,32 +597,32 @@ void ObjectWidgets::AddGFXMeter(GFxMovieView * view, ObjectWidget * objectMeter,
 	else
 		update[21].SetUndefined();
 
-	if (colors[0] != -1)
+	if (colors[12] != -1)
 		update[22] = objectMeter->params[ObjectWidget::kProperty_StaminaPrimaryColor];
 	else
 		update[22].SetUndefined();
 
-	if (colors[1] != -1)
+	if (colors[13] != -1)
 		update[23] = objectMeter->params[ObjectWidget::kProperty_StaminaSecondaryColor];
 	else
 		update[23].SetUndefined();
 
-	if (colors[2] != -1)
+	if (colors[14] != -1)
 		update[24] = objectMeter->params[ObjectWidget::kProperty_StaminaFlashColor];
 	else
 		update[24].SetUndefined();
 
-	if (colors[3] != -1)
+	if (colors[15] != -1)
 		update[25] = objectMeter->params[ObjectWidget::kProperty_StaminaPrimaryFriendlyColor];
 	else
 		update[25].SetUndefined();
 
-	if (colors[4] != -1)
+	if (colors[16] != -1)
 		update[26] = objectMeter->params[ObjectWidget::kProperty_StaminaSecondaryFriendlyColor];
 	else
 		update[26].SetUndefined();
 
-	if (colors[5] != -1)
+	if (colors[17] != -1)
 		update[27] = objectMeter->params[ObjectWidget::kProperty_StaminaFlashFriendlyColor];
 	else
 		update[27].SetUndefined();
@@ -630,7 +631,7 @@ void ObjectWidgets::AddGFXMeter(GFxMovieView * view, ObjectWidget * objectMeter,
 		update[28] = objectMeter->params[ObjectWidget::kProperty_StaminaFillMode];
 	else
 		update[28].SetUndefined();	
-
+	// Need to find where Invoke is defined to see if adjustments need to be made due to the larger update array.
 	view->Invoke("_root.hudExtension.floatingWidgets.loadWidget", &objectMeter->object, update, 29);
 	objectMeter->object.AddManaged();
 }
@@ -848,7 +849,7 @@ void AddRemoveWidgetTask::Run()
 					UInt32 flags = ObjectWidget::kFlag_RemoveOnDeath | ObjectWidget::kFlag_RemoveOutOfCombat | ObjectWidget::kFlag_UpdatePercent | ObjectWidget::kFlag_UseLineOfSight | ObjectWidget::kFlag_UseHostility | ObjectWidget::kFlag_HideOnInvisibility;
 					if((m_context & ObjectWidget::kContext_Friendly) == ObjectWidget::kContext_Friendly)
 						flags |= ObjectWidget::kFlag_Friendly;
-					UInt32 colors[] = {-1, -1, -1, -1, -1, -1};
+					UInt32 colors[] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}; // original size of 6 "-1s".
 					g_hudExtension->AddMeter(m_formId, m_current, m_max, flags, -1, colors);
 				}
 				break;
