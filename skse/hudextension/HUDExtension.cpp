@@ -360,10 +360,17 @@ void ObjectWidget::QueryState(TESObjectREFR * reference, bool * isVisible, bool 
 	Actor * actor = DYNAMIC_CAST(reference, TESObjectREFR, Actor);
 	if(actor) {
 		if ((flags & kFlag_UpdatePercent) == kFlag_UpdatePercent) {
-			params[kProperty_CurrentValue].SetNumber(actor->actorValueOwner.GetCurrent(24));
-			params[kProperty_MaximumValue].SetNumber(actor->actorValueOwner.GetMaximum(24));
+			// Get values from Tes5Mod Actor Value Indices.
+			// http://www.uesp.net/wiki/Tes5Mod:Actor_Value_Indices
+			params[kProperty_HealthCurrentValue].SetNumber(actor->actorValueOwner.GetCurrent(24));
+			params[kProperty_HealthMaximumValue].SetNumber(actor->actorValueOwner.GetMaximum(24));
+			params[kProperty_MagickaCurrentValue].SetNumber(actor->actorValueOwner.GetCurrent(25));
+			params[kProperty_MagickaMaximumValue].SetNumber(actor->actorValueOwner.GetMaximum(25));
+			params[kProperty_StaminaCurrentValue].SetNumber(actor->actorValueOwner.GetCurrent(26));
+			params[kProperty_StaminaMaximumValue].SetNumber(actor->actorValueOwner.GetMaximum(26));
 
-			double percent = params[kProperty_CurrentValue].GetNumber() / params[kProperty_MaximumValue].GetNumber();
+			// Checks if at health is at 100%+ and hides if true.
+			double percent = params[kProperty_HealthCurrentValue].GetNumber() / params[kProperty_HealthMaximumValue].GetNumber();
 			if (percent >= 1.0 && (g_hudExtension->hudFlags & HUDExtension::kFlags_HideAtFull) == HUDExtension::kFlags_HideAtFull)
 				isHidden = true;
 		}
