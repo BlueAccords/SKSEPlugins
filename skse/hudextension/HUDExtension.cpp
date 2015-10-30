@@ -288,25 +288,41 @@ void ObjectWidget::UpdateText()
 
 void ObjectWidget::UpdateValues()
 {
-	GFxValue update[2];
-	update[0] = params[kProperty_CurrentValue];
-	update[1] = params[kProperty_MaximumValue];
+	GFxValue update[6]; // original size of 2
+	update[0] = params[kProperty_HealthCurrentValue];
+	update[1] = params[kProperty_HealthMaximumValue];
+	update[2] = params[kProperty_MagickaCurrentValue];
+	update[3] = params[kProperty_MagickaMaximumValue];
+	update[4] = params[kProperty_StaminaCurrentValue];
+	update[5] = params[kProperty_StaminaMaximumValue];
 
 	object.Invoke("setValues", NULL, update, 2);
 }
 
 void ObjectWidget::UpdateColors()
 {
-	GFxValue update[3];
+	GFxValue update[18]; // original size of 3
 	if (!IsFriendly()) {
-		update[0] = params[kProperty_PrimaryColor];
-		update[1] = params[kProperty_SecondaryColor];
-		update[2] = params[kProperty_FlashColor];
+		update[0] = params[kProperty_HealthPrimaryColor];
+		update[1] = params[kProperty_HealthSecondaryColor];
+		update[2] = params[kProperty_HealthFlashColor];
+		update[3] = params[kProperty_MagickaPrimaryColor];
+		update[4] = params[kProperty_MagickaSecondaryColor];
+		update[5] = params[kProperty_MagickaFlashColor];
+		update[6] = params[kProperty_StaminaPrimaryColor];
+		update[7] = params[kProperty_StaminaSecondaryColor];
+		update[8] = params[kProperty_StaminaFlashColor];
 	}
 	else {
-		update[0] = params[kProperty_PrimaryFriendlyColor];
-		update[1] = params[kProperty_SecondaryFriendlyColor];
-		update[2] = params[kProperty_FlashFriendlyColor];
+		update[0] = params[kProperty_HealthPrimaryFriendlyColor];
+		update[1] = params[kProperty_HealthSecondaryFriendlyColor];
+		update[2] = params[kProperty_HealthFlashFriendlyColor];
+		update[3] = params[kProperty_MagickaPrimaryFriendlyColor];
+		update[4] = params[kProperty_MagickaSecondaryFriendlyColor];
+		update[5] = params[kProperty_MagickaFlashFriendlyColor];
+		update[6] = params[kProperty_StaminaPrimaryFriendlyColor];
+		update[7] = params[kProperty_StaminaSecondaryFriendlyColor];
+		update[8] = params[kProperty_StaminaFlashFriendlyColor];
 	}
 	object.Invoke("setColors", NULL, update, 3);
 }
