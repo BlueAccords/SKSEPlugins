@@ -227,19 +227,42 @@ void ObjectWidget::UpdateProperty(UInt32 type)
 			}
 		}
 		break;
-	case kPropertyType_CurrentValue:
-	case kPropertyType_MaximumValue:
+	// Case fall through so it will keep going through the cases
+	// until the break; statement is reached.
+	case kPropertyType_HealthCurrentValue:
+	case kPropertyType_HealthMaximumValue:
+	case kPropertyType_MagickaCurrentValue:
+	case kPropertyType_MagickaMaximumValue:
+	case kPropertyType_StaminaCurrentValue:
+	case kPropertyType_StaminaMaximumValue:
 		UpdateValues();
 		break;
-	case kPropertyType_PrimaryColor:
-	case kPropertyType_SecondaryColor:
-	case kPropertyType_FlashColor:
-	case kPropertyType_PrimaryFriendlyColor:
-	case kPropertyType_SecondaryFriendlyColor:
-	case kPropertyType_FlashFriendlyColor:
+	// Health Cases
+	case kPropertyType_HealthPrimaryColor:
+	case kPropertyType_HealthSecondaryColor:
+	case kPropertyType_HealthFlashColor:
+	case kPropertyType_HealthPrimaryFriendlyColor:
+	case kPropertyType_HealthSecondaryFriendlyColor:
+	case kPropertyType_HealthFlashFriendlyColor:
+	// Magicka Cases
+	case kPropertyType_MagickaPrimaryColor:
+	case kPropertyType_MagickaSecondaryColor:
+	case kPropertyType_MagickaFlashColor:
+	case kPropertyType_MagickaPrimaryFriendlyColor:
+	case kPropertyType_MagickaSecondaryFriendlyColor:
+	case kPropertyType_MagickaFlashFriendlyColor:
+	// Stamina Cases
+	case kPropertyType_StaminaPrimaryColor:
+	case kPropertyType_StaminaSecondaryColor:
+	case kPropertyType_StaminaFlashColor:
+	case kPropertyType_StaminaPrimaryFriendlyColor:
+	case kPropertyType_StaminaSecondaryFriendlyColor:
+	case kPropertyType_StaminaFlashFriendlyColor:
 		UpdateColors();
 		break;
-	case kPropertyType_FillMode:
+	case kPropertyType_HealthFillMode:
+	case kPropertyType_MagickaFillMode:
+	case kPropertyType_StaminaFillMode:
 		UpdateFillMode();
 		break;
 	case kPropertyType_StartFlash:
