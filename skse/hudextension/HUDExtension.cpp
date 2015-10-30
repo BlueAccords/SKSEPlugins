@@ -337,6 +337,8 @@ void ObjectWidget::UpdateFlags()
 	}
 }
 
+// *************** Important ******************************************************************************************************
+// Need to adjust this for magicka and stamina as well. 
 void ObjectWidget::UpdateFillMode()
 {
 	object.Invoke("setFillDirection", NULL, &params[kProperty_FillMode], 1);
@@ -411,6 +413,8 @@ void ObjectWidget::QueryState(TESObjectREFR * reference, bool * isVisible, bool 
 	*isFriendly = !isHostile;
 }
 
+// this involves positioning of the hud elements so i'm assuming magicka and stamina
+// will need separate positions below the health bar.
 void ObjectWidget::UpdateComponent(GFxMovieView * view, float * depth)
 {
 	TESForm * form = LookupFormByID(formId);
@@ -480,58 +484,154 @@ void ObjectWidget::UpdateComponent(GFxMovieView * view, float * depth)
 	}
 }
 
+// Assigns properties to the objectMeter object.
+// Unsure if fillmode is reusable for all three bars or not.
+// Need to find out what GFxMoviewView actually is.
 void ObjectWidgets::AddGFXMeter(GFxMovieView * view, ObjectWidget * objectMeter, float current, float max, UInt32 flags, UInt32 fillMode, UInt32 colors[])
 {
-	GFxValue update[11];
+	GFxValue update[29]; // original value is 11.
 	update[0].SetNumber(objectMeter->formId);
 	update[1].SetNumber(objectMeter->flags);
 
+	// Health Values
 	if(current != -1)
-		update[2] = objectMeter->params[ObjectWidget::kProperty_CurrentValue];
+		update[2] = objectMeter->params[ObjectWidget::kProperty_HealthCurrentValue];
 	else
 		update[2].SetUndefined();
 
 	if (max != -1)
-		update[3] = objectMeter->params[ObjectWidget::kProperty_MaximumValue];
+		update[3] = objectMeter->params[ObjectWidget::kProperty_HealthMaximumValue];
 	else
 		update[3].SetUndefined();
 
 	if (colors[0] != -1)
-		update[4] = objectMeter->params[ObjectWidget::kProperty_PrimaryColor];
+		update[4] = objectMeter->params[ObjectWidget::kProperty_HealthPrimaryColor];
 	else
 		update[4].SetUndefined();
 
 	if (colors[1] != -1)
-		update[5] = objectMeter->params[ObjectWidget::kProperty_SecondaryColor];
+		update[5] = objectMeter->params[ObjectWidget::kProperty_HealthSecondaryColor];
 	else
 		update[5].SetUndefined();
 
 	if (colors[2] != -1)
-		update[6] = objectMeter->params[ObjectWidget::kProperty_FlashColor];
+		update[6] = objectMeter->params[ObjectWidget::kProperty_HealthFlashColor];
 	else
 		update[6].SetUndefined();
 
 	if (colors[3] != -1)
-		update[7] = objectMeter->params[ObjectWidget::kProperty_PrimaryFriendlyColor];
+		update[7] = objectMeter->params[ObjectWidget::kProperty_HealthPrimaryFriendlyColor];
 	else
 		update[7].SetUndefined();
 
 	if (colors[4] != -1)
-		update[8] = objectMeter->params[ObjectWidget::kProperty_SecondaryFriendlyColor];
+		update[8] = objectMeter->params[ObjectWidget::kProperty_HealthSecondaryFriendlyColor];
 	else
 		update[8].SetUndefined();
 
 	if (colors[5] != -1)
-		update[9] = objectMeter->params[ObjectWidget::kProperty_FlashFriendlyColor];
+		update[9] = objectMeter->params[ObjectWidget::kProperty_HealthFlashFriendlyColor];
 	else
 		update[9].SetUndefined();
 
 	if(fillMode != -1)
-		update[10] = objectMeter->params[ObjectWidget::kProperty_FillMode];
+		update[10] = objectMeter->params[ObjectWidget::kProperty_HealthFillMode];
 	else
 		update[10].SetUndefined();
 
-	view->Invoke("_root.hudExtension.floatingWidgets.loadWidget", &objectMeter->object, update, 11);
+	// Magicka Values
+	if(current != -1)
+		update[11] = objectMeter->params[ObjectWidget::kProperty_MagickaCurrentValue];
+	else
+		update[11].SetUndefined();
+
+	if (max != -1)
+		update[12] = objectMeter->params[ObjectWidget::kProperty_MagickaMaximumValue];
+	else
+		update[12].SetUndefined();
+
+	if (colors[0] != -1)
+		update[13] = objectMeter->params[ObjectWidget::kProperty_MagickaPrimaryColor];
+	else
+		update[13].SetUndefined();
+
+	if (colors[1] != -1)
+		update[14] = objectMeter->params[ObjectWidget::kProperty_MagickaSecondaryColor];
+	else
+		update[14].SetUndefined();
+
+	if (colors[2] != -1)
+		update[15] = objectMeter->params[ObjectWidget::kProperty_MagickaFlashColor];
+	else
+		update[15].SetUndefined();
+
+	if (colors[3] != -1)
+		update[16] = objectMeter->params[ObjectWidget::kProperty_MagickaPrimaryFriendlyColor];
+	else
+		update[16].SetUndefined();
+
+	if (colors[4] != -1)
+		update[17] = objectMeter->params[ObjectWidget::kProperty_MagickaSecondaryFriendlyColor];
+	else
+		update[17].SetUndefined();
+
+	if (colors[5] != -1)
+		update[18] = objectMeter->params[ObjectWidget::kProperty_MagickaFlashFriendlyColor];
+	else
+		update[18].SetUndefined();
+
+	if(fillMode != -1)
+		update[19] = objectMeter->params[ObjectWidget::kProperty_MagickaFillMode];
+	else
+		update[19].SetUndefined();	
+
+	// Stamina Values
+	if(current != -1)
+		update[20] = objectMeter->params[ObjectWidget::kProperty_StaminaCurrentValue];
+	else
+		update[20].SetUndefined();
+
+	if (max != -1)
+		update[21] = objectMeter->params[ObjectWidget::kProperty_StaminaMaximumValue];
+	else
+		update[21].SetUndefined();
+
+	if (colors[0] != -1)
+		update[22] = objectMeter->params[ObjectWidget::kProperty_StaminaPrimaryColor];
+	else
+		update[22].SetUndefined();
+
+	if (colors[1] != -1)
+		update[23] = objectMeter->params[ObjectWidget::kProperty_StaminaSecondaryColor];
+	else
+		update[23].SetUndefined();
+
+	if (colors[2] != -1)
+		update[24] = objectMeter->params[ObjectWidget::kProperty_StaminaFlashColor];
+	else
+		update[24].SetUndefined();
+
+	if (colors[3] != -1)
+		update[25] = objectMeter->params[ObjectWidget::kProperty_StaminaPrimaryFriendlyColor];
+	else
+		update[25].SetUndefined();
+
+	if (colors[4] != -1)
+		update[26] = objectMeter->params[ObjectWidget::kProperty_StaminaSecondaryFriendlyColor];
+	else
+		update[26].SetUndefined();
+
+	if (colors[5] != -1)
+		update[27] = objectMeter->params[ObjectWidget::kProperty_StaminaFlashFriendlyColor];
+	else
+		update[27].SetUndefined();
+
+	if(fillMode != -1)
+		update[28] = objectMeter->params[ObjectWidget::kProperty_StaminaFillMode];
+	else
+		update[28].SetUndefined();	
+
+	view->Invoke("_root.hudExtension.floatingWidgets.loadWidget", &objectMeter->object, update, 29);
 	objectMeter->object.AddManaged();
 }
 
@@ -734,6 +834,8 @@ void HUDExtension::SetMeterProperty(UInt32 formId, UInt32 type, double value)
 	m_components.SetMeterProperty(formId, type, value);
 }
 
+// UInt32 flags and UInt32 colors are defined in this function.
+// To change the number of colors used change the color array here.
 void AddRemoveWidgetTask::Run()
 {
 	if(g_hudExtension) {
