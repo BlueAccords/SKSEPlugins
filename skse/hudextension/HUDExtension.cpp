@@ -646,6 +646,9 @@ void ObjectWidgets::RemoveGFXMeter(GFxMovieView * view, ObjectWidget * objectMet
 	}
 }
 
+// Check HudExtension.h to see where HealthbarSet is defined.
+// MagickabarSet and StaminabarSet may also need to be defined.
+// Unsure of how to create a new ObjectWidget with a unique formid.
 bool ObjectWidgets::AddMeter(GFxMovieView * view, UInt32 formId, float current, float max, UInt32 flags, UInt32 fillMode, UInt32 colors[])
 {
 	bool added = false;
