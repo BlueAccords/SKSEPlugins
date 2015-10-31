@@ -35,35 +35,78 @@ public:
 
 	enum PropertyTypes
 	{
+		// Health 
 		kPropertyType_Flags,
-		kPropertyType_CurrentValue,
-		kPropertyType_MaximumValue,
-		kPropertyType_PrimaryColor,
-		kPropertyType_SecondaryColor,
-		kPropertyType_FlashColor,
-		kPropertyType_PrimaryFriendlyColor,
-		kPropertyType_SecondaryFriendlyColor,
-		kPropertyType_FlashFriendlyColor,
-		kPropertyType_FillMode,
+		kPropertyType_HealthCurrentValue,
+		kPropertyType_HealthMaximumValue,
+		kPropertyType_HealthPrimaryColor,
+		kPropertyType_HealthSecondaryColor,
+		kPropertyType_HealthFlashColor,
+		kPropertyType_HealthPrimaryFriendlyColor,
+		kPropertyType_HealthSecondaryFriendlyColor,
+		kPropertyType_HealthFlashFriendlyColor,
+		kPropertyType_HealthFillMode,
+		// Not adding magicka/stamina variants yet.
 		kPropertyType_StartFlash,
 		kPropertyType_Name,
-		kPropertyType_NumProperties
+		kPropertyType_NumProperties,
+		// Magicka
+		kPropertyType_MagickaCurrentValue,
+		kPropertyType_MagickaMaximumValue,
+		kPropertyType_MagickaPrimaryColor,
+		kPropertyType_MagickaSecondaryColor,
+		kPropertyType_MagickaFlashColor,
+		kPropertyType_MagickaPrimaryFriendlyColor,
+		kPropertyType_MagickaSecondaryFriendlyColor,
+		kPropertyType_MagickaFlashFriendlyColor,
+		kPropertyType_MagickaFillMode,
+		// Stamina
+		kPropertyType_StaminaCurrentValue,
+		kPropertyType_StaminaMaximumValue,
+		kPropertyType_StaminaPrimaryColor,
+		kPropertyType_StaminaSecondaryColor,
+		kPropertyType_StaminaFlashColor,
+		kPropertyType_StaminaPrimaryFriendlyColor,
+		kPropertyType_StaminaSecondaryFriendlyColor,
+		kPropertyType_StaminaFlashFriendlyColor,
+		kPropertyType_StaminaFillMode,
 	};
 
 
 	enum Properties
 	{
-		kProperty_CurrentValue = 0,
-		kProperty_MaximumValue,
-		kProperty_PrimaryColor,
-		kProperty_SecondaryColor,
-		kProperty_FlashColor,
-		kProperty_PrimaryFriendlyColor,
-		kProperty_SecondaryFriendlyColor,
-		kProperty_FlashFriendlyColor,
-		kProperty_FillMode,
+		// Health
+		kProperty_HealthCurrentValue = 0,
+		kProperty_HealthMaximumValue,
+		kProperty_HealthPrimaryColor,
+		kProperty_HealthSecondaryColor,
+		kProperty_HealthFlashColor,
+		kProperty_HealthPrimaryFriendlyColor,
+		kProperty_HealthSecondaryFriendlyColor,
+		kProperty_HealthFlashFriendlyColor,
+		kProperty_HealthFillMode,
 		kProperty_Name,
-		kProperty_NumProperties
+		kProperty_NumProperties,
+		// Magicka
+		kProperty_MagickaCurrentValue = 0,
+		kProperty_MagickaMaximumValue,
+		kProperty_MagickaPrimaryColor,
+		kProperty_MagickaSecondaryColor,
+		kProperty_MagickaFlashColor,
+		kProperty_MagickaPrimaryFriendlyColor,
+		kProperty_MagickaSecondaryFriendlyColor,
+		kProperty_MagickaFlashFriendlyColor,
+		kProperty_MagickaFillMode,
+		// Stamina
+		kProperty_StaminaCurrentValue = 0,
+		kProperty_StaminaMaximumValue,
+		kProperty_StaminaPrimaryColor,
+		kProperty_StaminaSecondaryColor,
+		kProperty_StaminaFlashColor,
+		kProperty_StaminaPrimaryFriendlyColor,
+		kProperty_StaminaSecondaryFriendlyColor,
+		kProperty_StaminaFlashFriendlyColor,
+		kProperty_StaminaFillMode,
 	};
 
 	enum StateContext
