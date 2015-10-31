@@ -753,7 +753,7 @@ bool ObjectWidgets::AddMeter(GFxMovieView * view, UInt32 formId, float current, 
 			objectMeter.params[ObjectWidget::kProperty_StaminaFlashFriendlyColor].SetNumber(colors[17]);
 		if(fillMode != -1)
 			objectMeter.params[ObjectWidget::kProperty_StaminaFillMode].SetNumber(fillMode);
-		AddGFXMeter(view, &objectMeter, current, max, flags, fillMode, colors);
+		AddGFXMeter(g_viewPortw, &objectMeter, current, max, flags, fillMode, colors);
 		m_data.insert(objectMeter);
 		added = true;
 	}
