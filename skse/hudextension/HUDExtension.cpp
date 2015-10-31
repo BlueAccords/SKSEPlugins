@@ -7,6 +7,45 @@
 
 #include <algorithm>
 
+// Need vc120 / Visual Studio 2013.
+// Nvm can work with vc140 if you CHANGE THE RUN TIME VERSION.
+// you will also need to link the vc14 version of common in the solution 
+// instead of the common_vc12 
+// Need flash CS4
+// you'll probably need to add new properties to HudConfig, add another 2 Meter objects,
+// open the MovieClip within flash, copy the first meter and paste 2 more below 
+// so anywhere in FloatingWidget you see "Meter" rename it to MeterHealth or something, name the clip too 
+// Expired_
+// MovieClip are scene objects 
+// Netrve
+// I want to keep it because there is no real alternative :\ 
+// Expired_
+// they can be on the stage, or the library 
+// Netrve
+// And I like the concept 
+// Expired_
+// attachMovie loads a clip by name from the library 
+// Netrve
+// I hope that I won't run into issues 
+// Expired_
+// this is how the Meters are loaded into the FloatingWidget 
+
+// Expired_
+// this is how the Meters are loaded into the FloatingWidget 
+// Netrve
+// Somehow I'm luckier than some others 
+// Either that or I'm really, really blind 
+// Expired_
+// during the loadMeter function it loads the Meter in, the Meter is another swf that contains just the meter 
+// Expired_
+// during the loadMeter function it loads the Meter in, the Meter is another swf that contains just the meter 
+// ← glenchild2 has quit (Ping timeout) 
+// Expired_
+// this is how you'd change the appearance of the meter, you could swap out the Meter swf 
+// Expired_
+// no 
+// the fla is the whole scene 
+// MovieClips are objects in the library 
 
 double ObjectWidget::GetProperty(UInt32 type)
 {
@@ -659,24 +698,61 @@ bool ObjectWidgets::AddMeter(GFxMovieView * view, UInt32 formId, float current, 
 	if(it == m_data.end()) {
 		objectMeter.flags = flags;
 		if(current != -1)
-			objectMeter.params[ObjectWidget::kProperty_CurrentValue].SetNumber(current);
+			objectMeter.params[ObjectWidget::kProperty_HealthCurrentValue].SetNumber(current);
 		if (max != -1)
-			objectMeter.params[ObjectWidget::kProperty_MaximumValue].SetNumber(max);
+			objectMeter.params[ObjectWidget::kProperty_HealthMaximumValue].SetNumber(max);
 		if(colors[0] != -1)
-			objectMeter.params[ObjectWidget::kProperty_PrimaryColor].SetNumber(colors[0]);
+			objectMeter.params[ObjectWidget::kProperty_HealthPrimaryColor].SetNumber(colors[0]);
 		if(colors[1] != -1)
-			objectMeter.params[ObjectWidget::kProperty_SecondaryColor].SetNumber(colors[1]);
+			objectMeter.params[ObjectWidget::kProperty_HealthSecondaryColor].SetNumber(colors[1]);
 		if(colors[2] != -1)
-			objectMeter.params[ObjectWidget::kProperty_FlashColor].SetNumber(colors[2]);
+			objectMeter.params[ObjectWidget::kProperty_HealthFlashColor].SetNumber(colors[2]);
 		if (colors[3] != -1)
-			objectMeter.params[ObjectWidget::kProperty_PrimaryFriendlyColor].SetNumber(colors[3]);
+			objectMeter.params[ObjectWidget::kProperty_HealthPrimaryFriendlyColor].SetNumber(colors[3]);
 		if (colors[4] != -1)
-			objectMeter.params[ObjectWidget::kProperty_SecondaryFriendlyColor].SetNumber(colors[4]);
+			objectMeter.params[ObjectWidget::kProperty_HealthSecondaryFriendlyColor].SetNumber(colors[4]);
 		if (colors[5] != -1)
-			objectMeter.params[ObjectWidget::kProperty_FlashFriendlyColor].SetNumber(colors[5]);
+			objectMeter.params[ObjectWidget::kProperty_HealthFlashFriendlyColor].SetNumber(colors[5]);
 		if(fillMode != -1)
-			objectMeter.params[ObjectWidget::kProperty_FillMode].SetNumber(fillMode);
-
+			objectMeter.params[ObjectWidget::kProperty_MagickaHealthFillMode].SetNumber(fillMode);
+		// Magicka Properties
+		if(current != -1)
+			objectMeter.params[ObjectWidget::kProperty_MagickaCurrentValue].SetNumber(current);
+		if (max != -1)
+			objectMeter.params[ObjectWidget::kProperty_MagickaMaximumValue].SetNumber(max);
+		if(colors[6] != -1)
+			objectMeter.params[ObjectWidget::kProperty_MagickaPrimaryColor].SetNumber(colors[6]);
+		if(colors[7] != -1)
+			objectMeter.params[ObjectWidget::kProperty_MagickaSecondaryColor].SetNumber(colors[7]);
+		if(colors[8] != -1)
+			objectMeter.params[ObjectWidget::kProperty_MagickaFlashColor].SetNumber(colors[8]);
+		if (colors[9] != -1)
+			objectMeter.params[ObjectWidget::kProperty_MagickaPrimaryFriendlyColor].SetNumber(colors[9]);
+		if (colors[10] != -1)
+			objectMeter.params[ObjectWidget::kProperty_MagickaSecondaryFriendlyColor].SetNumber(colors[10]);
+		if (colors[11] != -1)
+			objectMeter.params[ObjectWidget::kProperty_MagickaFlashFriendlyColor].SetNumber(colors[11]);
+		if(fillMode != -1)
+			objectMeter.params[ObjectWidget::kProperty_MagickaFillMode].SetNumber(fillMode);
+		// Stamina Properties
+		if(current != -1)
+			objectMeter.params[ObjectWidget::kProperty_StaminaCurrentValue].SetNumber(current);
+		if (max != -1)
+			objectMeter.params[ObjectWidget::kProperty_StaminaMaximumValue].SetNumber(max);
+		if(colors[12] != -1)
+			objectMeter.params[ObjectWidget::kProperty_StaminaPrimaryColor].SetNumber(colors[12]);
+		if(colors[13] != -1)
+			objectMeter.params[ObjectWidget::kProperty_StaminaSecondaryColor].SetNumber(colors[13]);
+		if(colors[14] != -1)
+			objectMeter.params[ObjectWidget::kProperty_StaminaFlashColor].SetNumber(colors[14]);
+		if (colors[15] != -1)
+			objectMeter.params[ObjectWidget::kProperty_StaminaPrimaryFriendlyColor].SetNumber(colors[15]);
+		if (colors[16] != -1)
+			objectMeter.params[ObjectWidget::kProperty_StaminaSecondaryFriendlyColor].SetNumber(colors[16]);
+		if (colors[17] != -1)
+			objectMeter.params[ObjectWidget::kProperty_StaminaFlashFriendlyColor].SetNumber(colors[17]);
+		if(fillMode != -1)
+			objectMeter.params[ObjectWidget::kProperty_StaminaFillMode].SetNumber(fillMode);
 		AddGFXMeter(view, &objectMeter, current, max, flags, fillMode, colors);
 		m_data.insert(objectMeter);
 		added = true;
